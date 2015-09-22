@@ -1,1 +1,3 @@
-# ipython-redbeaver
+# redbeaver-ipython
+
+redbeaver extension for IPython Notebook
