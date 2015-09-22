@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='redbeaver-ipython',
-    version='0.0.1',
+    version='0.0.2',
     packages=['redbeaver_ipython'],
     url='https://github.com/aliskhakov/redbeaver-ipython',
     license='Apache License 2.0',
