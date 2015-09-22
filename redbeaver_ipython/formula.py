@@ -6,6 +6,12 @@ import re
 
 class Formula(RedbeaverFormula):
     __LATEX_KEY__ = 3
+    __MATH_OUTPUT_STR__ = 'math'
+    __LATEX_OUTPUT_STR__ = 'latex'
+
+    def __init__(self, output=None):
+        super(Formula, self).__init__()
+        self.__output = output
 
     def _update_fn_registry(self, fn, wrapped_fn):
         super(Formula, self)._update_fn_registry(fn, wrapped_fn)
@@ -16,7 +22,10 @@ class Formula(RedbeaverFormula):
         ret = super(Formula, self)._wrap_body(fn, num)
         
         try:
-            display(Math(self._get_fn_latex(fn.__name__)))
+            if not self.__output or self.__output == self.__MATH_OUTPUT_STR__:
+                display(Math(self._get_fn_latex(fn.__name__)))
+            elif self.__output == self.__LATEX_OUTPUT_STR__:
+                display(self._get_fn_latex(fn.__name__))
         except:
             display(self._get_fn_latex(fn.__name__))
         
